@@ -7,23 +7,34 @@ module.exports = {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
       },
-      AllList: {
+      text: {
         type: Sequelize.STRING,
-        allowNull: false
+        allowNull: false, // Task name is required
+      },
+      description: {
+        type: Sequelize.TEXT,
+        allowNull: true, // Optional description
+      },
+      completed: {
+        type: Sequelize.BOOLEAN,
+        defaultValue: false, // Default: not completed
       },
       createdAt: {
         allowNull: false,
-        type: Sequelize.DATE
+        type: Sequelize.DATE,
+        defaultValue: Sequelize.literal('CURRENT_TIMESTAMP'),
       },
       updatedAt: {
         allowNull: false,
-        type: Sequelize.DATE
+        type: Sequelize.DATE,
+        defaultValue: Sequelize.literal('CURRENT_TIMESTAMP'),
       }
     });
   },
-  async down(queryInterface, Sequelize) {
-    await queryInterface.dropTable('Lists');
+
+  down: async (queryInterface, Sequelize) => {
+    await queryInterface.dropTable('lists');
   }
 };

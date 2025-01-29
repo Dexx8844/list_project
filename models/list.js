@@ -11,20 +11,24 @@ List.init(
       primaryKey: true,
       type: DataTypes.INTEGER,
     },
-    AllList: {
+    text: {  
       type: DataTypes.STRING,
-      allowNull: false,  // Ensure this field is required
+      allowNull: false, // Task name is required
     },
-    // type: {
-    //   type: DataTypes.STRING,
-    //   allowNull: false,  // Ensure this field is required
-    // },
+    description: {  
+      type: DataTypes.TEXT, // Allows longer descriptions
+      allowNull: true,  // Optional field
+    },
+    completed: {
+      type: DataTypes.BOOLEAN,
+      defaultValue: false, // Default is not completed
+    },
   },
   {
     sequelize,
     modelName: 'List',
-    tableName: 'Lists',
-    timestamps: true,  // If you want the createdAt and updatedAt fields
+    tableName: 'lists',
+    timestamps: true, // Adds createdAt and updatedAt
   }
 );
 

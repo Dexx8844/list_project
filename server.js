@@ -1,5 +1,6 @@
 //import express framework
 const express = require('express');
+const cors = require('cors');
 
 const sequelize = require('./database/sequelize');
 //import sequelize instance from database
@@ -7,9 +8,11 @@ const sequelize = require('./database/sequelize');
 const PORT = 3540;
 const listRouter = require('./router/listRouter');
 const app = express();
- 
+
 app.use(express.json());
 // app.use(userRouter);
+
+app.use(cors({origin: "*"}));
 
 app.use(listRouter);
 app.get('/', (req, res) => {

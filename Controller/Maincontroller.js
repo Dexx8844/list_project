@@ -7,8 +7,9 @@ exports.getnewList = async (req, res) => {
 
         // Create a new list using the List model
         const newList = await List.create({
-             AllList,       // Field name in the model
-            //description // Field description in the model
+             text,       // Field name in the model
+           description,  // Field description in the model
+           completed
         });
 
         // Respond with the success message and the created list
