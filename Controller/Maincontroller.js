@@ -1,4 +1,4 @@
-const List = require('../models/List'); // Import the List model
+const List = require('../models/list'); // Import the List model
 
 exports.getnewList = async (req, res) => {
     try {
