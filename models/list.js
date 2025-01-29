@@ -27,7 +27,7 @@ List.init(
   {
     sequelize,
     modelName: 'List',
-    tableName: 'lists',
+    tableName: 'Lists',
     timestamps: true, // Adds createdAt and updatedAt
   }
 );

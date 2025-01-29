@@ -3,7 +3,7 @@ const List = require('../models/list'); // Import the List model
 exports.getnewList = async (req, res) => {
     try {
         // Destructure the list properties from the request body
-        const { AllList, description } = req.body;
+        const { text, description, completed } = req.body;
 
         // Create a new list using the List model
         const newList = await List.create({
@@ -70,7 +70,7 @@ exports.getOneList = async (req, res) => {
 exports.updateList = async (req, res) => {
     try {
         const { id } = req.params;
-        const { list: updatedList } = req.body;
+        const { text, description, completed : updatedComplete } = req.body;
 
         const foundList = await List.findOne({
             where: { id },
@@ -84,13 +84,13 @@ exports.updateList = async (req, res) => {
 
         // Update the list
         await List.update(
-            { List: updatedList },
+            {  text, description, completed : updatedComplete },
             { where: { id } }
         );
 
         res.status(200).json({
             message: "List updated successfully",
-            data: { id, List: updatedList },
+            data: { text, description, completed : updatedComplete },
         });
     } catch (error) {
         res.status(500).json({
